@@ -8,7 +8,7 @@ const mutations={
                 _type:'comment',
                 comment:inputComment,
                 //user:albulmUser,
-                user:localUser || "anonymouse",
+                user:JSON.stringify(localUser) || "anonymouse",
                 post:{
                     _type:'reference',
                     _ref:id,
