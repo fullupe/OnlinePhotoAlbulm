@@ -20,7 +20,9 @@ export const Login = (props: Props) => {
 
        if(password) {
 
-        localStorage.setItem('albulmUser', JSON.stringify(password));
+        //localStorage.setItem('albulmUser', JSON.stringify(password));
+        sessionStorage.setItem('albulmUser', JSON.stringify(password));
+
         router.push('/albulmPage')
     }
 

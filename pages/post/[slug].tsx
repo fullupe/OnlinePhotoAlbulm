@@ -43,7 +43,7 @@ function Post({image, id,}: Props): ReactElement {
    
 
 
-    //console.log(theuser)
+    console.log(albulmUser)
 
     useEffect(() =>{
         const abortController = new AbortController();
@@ -91,7 +91,7 @@ function Post({image, id,}: Props): ReactElement {
 
         const getUserFromLocalStorage= async ()=>{
 
-           let  localUser = await window.localStorage.getItem('albulmUser')
+           let  localUser = await window.sessionStorage.getItem('albulmUser')
            
            setAlbulmUser(localUser);
         }

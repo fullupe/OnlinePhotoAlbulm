@@ -9,17 +9,17 @@ const Home: NextPage = () => {
   const router = useRouter()
 
 
-  const [albulmUser, setAlbulmUser] = useState(null)
+  const [albulmUser, setAlbulmUser] = useState<string>('')
 
   useEffect(() =>{
 
   
 
-    setAlbulmUser(JSON.parse(localStorage.getItem('albulmUser') || '{}'));
+      setAlbulmUser(sessionStorage.getItem('albulmUser') || " ");
 
   },[])
 
-  if(albulmUser){
+  if(albulmUser.length > 1){
     router.push('/albulmPage')
   }
 
