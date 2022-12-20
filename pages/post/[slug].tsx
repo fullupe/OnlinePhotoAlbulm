@@ -89,9 +89,9 @@ function Post({image, id,}: Props): ReactElement {
 
         const getUserFromLocalStorage= async ()=>{
 
-           let  localUser = await JSON.parse(localStorage.getItem('albulmUser') || "")
+           //let  localUser = await JSON.parse(localStorage.getItem('albulmUser') || "")
            
-           setAlbulmUser(localUser);
+           setAlbulmUser(await JSON.parse(localStorage.getItem('albulmUser') || ""));
         }
         
         getUserFromLocalStorage()

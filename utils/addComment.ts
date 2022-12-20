@@ -6,8 +6,8 @@ const mutations={
         { 
             create:{
                 _type:'comment',
-                comment:inputComment!,
-                user:albulmUser!,
+                comment:inputComment,
+                user:albulmUser,
                 post:{
                     _type:'reference',
                     _ref:id,
