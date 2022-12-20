@@ -87,9 +87,9 @@ function Post({image, id,}: Props): ReactElement {
 
         const abortController = new AbortController();
 
-        const getUserFromLocalStorage=()=>{
+        const getUserFromLocalStorage= async ()=>{
 
-           let  localUser = JSON.parse(localStorage.getItem('albulmUser') || "")
+           let  localUser = await JSON.parse(localStorage.getItem('albulmUser') || "")
            
            setAlbulmUser(localUser);
         }
@@ -154,7 +154,7 @@ function Post({image, id,}: Props): ReactElement {
                     </form>
                     <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
-                    {
+                    {/* {
                      comment ? (
                         comment?.map((com:any)=>(
                                 
@@ -177,7 +177,7 @@ function Post({image, id,}: Props): ReactElement {
                      ):(
                          null
                      )
-                    }
+                    } */}
                         
                     </div>
 
