@@ -154,8 +154,8 @@ function Post({image, id,}: Props): ReactElement {
                     </form>
                     <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
-                    {/* {
-                     comment ? (
+                    {
+                      
                         comment?.map((com:any)=>(
                                 
                             <div key={com?._id} className="flex w-full border-b-2d border-gray-300 shadow  scrollbar-hide rounded-lg bg-white px-2 py-1">
@@ -174,10 +174,8 @@ function Post({image, id,}: Props): ReactElement {
                             </div>
                             
                             ))
-                     ):(
-                         null
-                     )
-                    } */}
+                     
+                    }
                         
                     </div>
 
@@ -198,7 +196,7 @@ function Post({image, id,}: Props): ReactElement {
 
 export const getServerSideProps: GetServerSideProps= async (Constext) =>{
 
-     const imagePost = Constext.query.slug;
+     const imagePost = Constext?.query?.slug;
 
      console.log(imagePost);
 
