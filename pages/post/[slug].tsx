@@ -87,11 +87,11 @@ function Post({image, id,}: Props): ReactElement {
 
         const abortController = new AbortController();
 
-        const getUserFromLocalStorage= async ()=>{
+        const getUserFromLocalStorage= ()=>{
 
            //let  localUser = await JSON.parse(localStorage.getItem('albulmUser') || "")
            
-           setAlbulmUser(await JSON.parse(localStorage.getItem('albulmUser') || ""));
+           setAlbulmUser(JSON.parse(localStorage.getItem('albulmUser') || ""));
         }
         
         getUserFromLocalStorage()
