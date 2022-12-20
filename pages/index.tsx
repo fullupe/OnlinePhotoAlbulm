@@ -2,24 +2,25 @@ import type { NextPage } from 'next'
 import React,{ ReactElement, useEffect, useState} from 'react';
 import Head from 'next/head'
 import { Login } from '../components/Login';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import Cookies from 'js-cookie'
 
 
 const Home: NextPage = () => {
   const router = useRouter()
 
 
-  const [albulmUser, setAlbulmUser] = useState<string>('')
+  const [albulmUser, setAlbulmUser] = useState<any>('')
 
   useEffect(() =>{
 
-  
+    setAlbulmUser(Cookies.get('name'))
 
-      setAlbulmUser(sessionStorage.getItem('albulmUser') || " ");
+      //setAlbulmUser(sessionStorage.getItem('albulmUser') || " ");
 
   },[])
 
-  if(albulmUser.length > 1){
+  if(albulmUser){
     router.push('/albulmPage')
   }
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { GiAbstract030 } from "react-icons/gi";
 import {SimpleTypeWriter} from "./SimpleTypeWriter";
 import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
+
 
 
 interface Props {
@@ -20,8 +22,9 @@ export const Login = (props: Props) => {
 
        if(password) {
 
+        Cookies.set('name', password)
         //localStorage.setItem('albulmUser', JSON.stringify(password));
-        sessionStorage.setItem('albulmUser', JSON.stringify(password));
+        //sessionStorage.setItem('albulmUser', JSON.stringify(password));
 
         router.push('/albulmPage')
     }

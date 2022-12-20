@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import Avatar from '../../components/Avatar';
 import TimeAgo from 'react-timeago'
 import { Footer } from '../../components/Footer';
-
+import Cookies from 'js-cookie'
 
 
 interface Props {
@@ -91,9 +91,9 @@ function Post({image, id,}: Props): ReactElement {
 
         const getUserFromLocalStorage= async ()=>{
 
-           let  localUser = await window.sessionStorage.getItem('albulmUser')
+           //let  localUser = await window.sessionStorage.getItem('albulmUser')
            
-           setAlbulmUser(localUser);
+           setAlbulmUser(Cookies.get('name'));
         }
         
         getUserFromLocalStorage()
