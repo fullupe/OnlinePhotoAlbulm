@@ -20,10 +20,11 @@ interface Props {
     image:any,
     id:string,
     comment:[]
+    somename:string
 }
 
 
-function Post({image, id,}: Props): ReactElement {
+function Post({image, id, somename}: Props): ReactElement {
 
     const router = useRouter()
 
@@ -116,7 +117,7 @@ function Post({image, id,}: Props): ReactElement {
 
         if(inputComment ){
 
-            await addCommment(inputComment, id, albulmUser)
+            await addCommment(inputComment, id, somename)
     
             setinputComment('')
 
@@ -161,7 +162,7 @@ function Post({image, id,}: Props): ReactElement {
                         </div>
                     </form>
 
-                    <p>{albulmUser}</p>
+                    <p>{somename}</p>
                     <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
                     {
@@ -207,6 +208,7 @@ function Post({image, id,}: Props): ReactElement {
 export const getServerSideProps: GetServerSideProps= async (Constext) =>{
 
      const imagePost = Constext?.query?.slug;
+     const somename = Constext.req.cookies.name;
 
      console.log(imagePost);
 
@@ -238,6 +240,8 @@ export const getServerSideProps: GetServerSideProps= async (Constext) =>{
             title:post?.title ,
             image:post?.mainImage,
             id:post?._id,
+            somename,
+            
            
 
         }

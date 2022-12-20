@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-export default async function  addCommment (inputComment:string, id:string, localUser:string){
+export default async function  addCommment (inputComment:string, id:string, somename:string){
 
 const  projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID
 const mutations={
@@ -9,7 +9,7 @@ const mutations={
                 _type:'comment',
                 comment:inputComment,
                 //user:albulmUser,
-                user:localUser || Cookies.get('name'),
+                user:somename,
                 post:{
                     _type:'reference',
                     _ref:id,
