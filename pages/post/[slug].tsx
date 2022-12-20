@@ -41,7 +41,7 @@ function Post({image, id,}: Props): ReactElement {
    
 
 
-    //console.log(inputComment)
+    console.log(albulmUser)
 
     useEffect(() =>{
         const abortController = new AbortController();
@@ -89,9 +89,9 @@ function Post({image, id,}: Props): ReactElement {
 
         const getUserFromLocalStorage= ()=>{
 
-           //let  localUser = await JSON.parse(localStorage.getItem('albulmUser') || "")
+           let  localUser = window.localStorage.getItem('albulmUser')
            
-           setAlbulmUser(JSON.parse(localStorage.getItem('albulmUser') || ""));
+           setAlbulmUser(localUser!);
         }
         
         getUserFromLocalStorage()
@@ -109,7 +109,7 @@ function Post({image, id,}: Props): ReactElement {
 
         if(inputComment){
 
-            await addCommment(inputComment, id)
+            await addCommment(inputComment, id, albulmUser)
     
             setinputComment('')
 
