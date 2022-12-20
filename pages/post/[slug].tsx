@@ -109,7 +109,7 @@ function Post({image, id,}: Props): ReactElement {
 
         if(inputComment){
 
-            await addCommment(inputComment, id, albulmUser)
+            await addCommment(inputComment, id)
     
             setinputComment('')
 
