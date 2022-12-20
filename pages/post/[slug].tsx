@@ -90,7 +90,7 @@ function Post({image, id,}: Props): ReactElement {
 
         const getUserFromLocalStorage=()=>{
 
-            setAlbulmUser(JSON.parse(localStorage.getItem('albulmUser') || '{}'));
+            setAlbulmUser(JSON.parse(localStorage.getItem('albulmUser') || ''));
         }
 
         getUserFromLocalStorage()
