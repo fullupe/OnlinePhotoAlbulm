@@ -43,9 +43,9 @@ const Home: NextPage = () => {
 }
 
 export default Home;
-Home.getLayout = function PageLayout(page:ReactElement){
-  return (<>{page}</>)
-}
+// Home.getLayout = function PageLayout(page:ReactElement){
+ // return (<>{page}</>)
+//}
 // function key(key: any, arg1: string): string {
 //   throw new Error('Function not implemented.');
 // }
