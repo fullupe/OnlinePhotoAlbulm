@@ -7,11 +7,11 @@ interface Props {
 
 function Avatar({}: Props): ReactElement {
     return (
-        <Image
-        className="rounded-full bg-black flex p-0.5 w-8h h-8k"
+        <img
+        className="rounded-full bg-black flex p-0.5 w-8 h-8"
         //layout="fill" 
-        width="32"
-        height="32"
+        //width="32"
+        //height="32"
         src={`https://avatars.dicebear.com/api/pixel-art/${Math.random()*100}.svg`} alt={''}/>
             
     
