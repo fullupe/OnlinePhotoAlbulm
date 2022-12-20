@@ -36,12 +36,14 @@ function Post({image, id,}: Props): ReactElement {
 
     const [comentSent, setComentSent] = useState<boolean>(false);
 
-    const [albulmUser, setAlbulmUser] = useState<string>('')
+    const [albulmUser, setAlbulmUser] = useState<string>('');
+
+    const [theuser, setTheuser] = useState<string>(window.localStorage.getItem('albulmUser') || "")
 
    
 
 
-    console.log(albulmUser)
+    console.log(theuser)
 
     useEffect(() =>{
         const abortController = new AbortController();
@@ -87,9 +89,9 @@ function Post({image, id,}: Props): ReactElement {
 
         const abortController = new AbortController();
 
-        const getUserFromLocalStorage= ()=>{
+        const getUserFromLocalStorage= async ()=>{
 
-           let  localUser = window.localStorage.getItem('albulmUser')
+           let  localUser = await window.localStorage.getItem('albulmUser')
            
            setAlbulmUser(localUser!);
         }
@@ -109,7 +111,7 @@ function Post({image, id,}: Props): ReactElement {
 
         if(inputComment){
 
-            await addCommment(inputComment, id, albulmUser)
+            await addCommment(inputComment, id, albulmUser,theuser)
     
             setinputComment('')
 
@@ -147,11 +149,14 @@ function Post({image, id,}: Props): ReactElement {
                     <form  onSubmit={addSubmit} className=" flex w-full px-2 py-1 rounded-lg border-2 ">
                         <div className="flex w-full px-2 py-1 rounded-lg border-2 border-orange-400">
                         <input value={inputComment} onChange={(e)=>setinputComment(e.target.value)} placeholder="Type comments......" type="text" className=" w-full outline-none bg-transparent "/>
-                            <button type="submit" disabled={!inputComment} className=" bg-orange-400 p-2 disabled:bg-gray-500 rounded-full">
+                        <input type='hidden'onChange={(e)=>setTheuser(e.target.value)} value={albulmUser} placeholder="name.." className=" w-full"/>
+                            <button type="submit"  disabled={!inputComment} className=" bg-orange-400 p-2 disabled:bg-gray-500 rounded-full">
                                 <BiSend className="w-5 h-5 text-white"/>
                             </button>
                         </div>
                     </form>
+
+                    <p>{String(albulmUser)}</p>
                     <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
                     {
