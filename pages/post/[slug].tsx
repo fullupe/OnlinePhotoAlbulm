@@ -36,7 +36,7 @@ function Post({image, id,}: Props): ReactElement {
 
     const [comentSent, setComentSent] = useState<boolean>(false);
 
-    const [albulmUser, setAlbulmUser] = useState<string>('');
+    const [albulmUser, setAlbulmUser] = useState<any>('');
 
     //const [theuser, setTheuser] = useState<string>(window.localStorage.getItem('albulmUser') || "")
 
@@ -87,21 +87,21 @@ function Post({image, id,}: Props): ReactElement {
 
     useEffect(() =>{
 
-        const abortController = new AbortController();
+        //const abortController = new AbortController();
 
         const getUserFromLocalStorage= async ()=>{
 
            let  localUser = await window.localStorage.getItem('albulmUser')
            
-           setAlbulmUser(localUser!);
+           setAlbulmUser(localUser);
         }
         
         getUserFromLocalStorage()
 
-        return ()=>{
+        // return ()=>{
 
-            abortController.abort()
-        }
+        //     abortController.abort()
+        // }
       },[])
 
 
@@ -109,18 +109,14 @@ function Post({image, id,}: Props): ReactElement {
     const addSubmit=  async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
 
-        let  localUser = await window.localStorage.getItem('albulmUser')
+        //let  localUser = await window.localStorage.getItem('albulmUser')
            
-           setAlbulmUser(localUser!);
+          // setAlbulmUser(localUser!);
 
-        //    let commentbody ={
-        //        user:localUser,
-        //        commentcolor: 
-        //    }
 
-        if(inputComment && localUser){
+        if(inputComment ){
 
-            await addCommment(inputComment, id, localUser)
+            await addCommment(inputComment, id, albulmUser)
     
             setinputComment('')
 
@@ -165,7 +161,7 @@ function Post({image, id,}: Props): ReactElement {
                         </div>
                     </form>
 
-                    <p>{String(albulmUser)}</p>
+                    <p>{albulmUser}</p>
                     <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
                     {
