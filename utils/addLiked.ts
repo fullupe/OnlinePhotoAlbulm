@@ -16,7 +16,10 @@ export default async function  addLiked (id:string,albulmUser:string){
                 }
             }
         ]
+
     }
+
+    console.log("you",albulmUser)
     
     await fetch(`https://${projectId}.api.sanity.io/v1/data/mutate/production`, {
     method: 'post',

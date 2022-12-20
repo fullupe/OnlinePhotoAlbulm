@@ -88,9 +88,11 @@ function Post({image, id,}: Props): ReactElement {
 
         const getUserFromLocalStorage=()=>{
 
-            setAlbulmUser(JSON.parse(localStorage.getItem('albulmUser') || ''));
+           let  localUser = JSON.parse(localStorage.getItem('albulmUser') || "")
+           
+           setAlbulmUser(localUser);
         }
-
+        
         getUserFromLocalStorage()
 
         return ()=>{
@@ -99,7 +101,6 @@ function Post({image, id,}: Props): ReactElement {
         }
       },[])
 
- 
 
 
     const addSubmit=  async (e:React.FormEvent<HTMLFormElement>)=>{
@@ -129,7 +130,7 @@ function Post({image, id,}: Props): ReactElement {
                     {
                       imageUrl && (
                          
-                          <img src={imageUrl} alt="" className=" object-cover  transition duration-300 w-full h-[600px] rounded-lg p-2 overflow-hidden"/>
+                          <img src={imageUrl} alt="img" className=" object-cover  transition duration-300 w-full h-[600px] rounded-lg p-2 overflow-hidden"/>
                        
                       )  
                     }
@@ -151,7 +152,7 @@ function Post({image, id,}: Props): ReactElement {
                     <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
                     {
-                     comment! && (
+                     comment ? (
                         comment?.map((com:any)=>(
                                 
                             <div key={com?._id} className="flex w-full border-b-2d border-gray-300 shadow  scrollbar-hide rounded-lg bg-white px-2 py-1">
@@ -172,6 +173,8 @@ function Post({image, id,}: Props): ReactElement {
                             </div>
                             
                             ))
+                     ):(
+                         null
                      )
                     }
                         
@@ -236,7 +239,10 @@ export default Post;
 
 
 
-// function retutn() {
-//     throw new Error('Function not implemented.');
-// }
+
+
+
+function localUser(localUser: any) {
+    throw new Error('Function not implemented.');
+}
 
