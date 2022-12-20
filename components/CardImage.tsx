@@ -28,7 +28,7 @@ function CardImage({id, mainImage, title, slug,}: Props): ReactElement {
 
     const [comment, setcomment] = useState<string[]>();
 
-    const [albulmUser, setAlbulmUser] = useState('');
+    const [albulmUser, setAlbulmUser] = useState<any>('');
 
     const [likeds, setlikeds] = useState<string[]>()
 
@@ -48,7 +48,7 @@ function CardImage({id, mainImage, title, slug,}: Props): ReactElement {
     
         .catch(console.error);
 
-        setAlbulmUser(JSON.parse(localStorage.getItem('albulmUser') || '{}'));
+        setAlbulmUser(localStorage.getItem('albulmUser') || sessionStorage.getItem('albulmUser'));
         }
 
         getCommentData()
