@@ -60,8 +60,6 @@ function Post({image, id,}: Props): ReactElement {
 
     },[inputComment, comentSent, id])
 
- 
-
 
     useEffect(()=>{
 
@@ -158,11 +156,11 @@ function Post({image, id,}: Props): ReactElement {
                                 
                             <div key={com?._id} className="flex w-full border-b-2d border-gray-300 shadow  scrollbar-hide rounded-lg bg-white px-2 py-1">
                                   <div className=" flex-1 space-x-2 ">
-                                     <div className=" flex  space-x-2 h-8 w-8">
+                                     <div className=" flex  space-x-2 h-10 w-10">
                                       <Avatar/>
                                       <p className="text-xs text-gray-500 italic">{com?.user}</p>
                                      </div>
-                                     <p className="pt-2 capitalize">{com?.comment}</p> 
+                                     <p className="pt-1 capitalize">{com?.comment}</p> 
                                    </div>
 
                                    <div className="mr-2 text-xs text-gray-500">
