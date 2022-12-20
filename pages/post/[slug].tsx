@@ -40,7 +40,7 @@ function Post({image, id,}: Props): ReactElement {
    
 
 
-    console.log(inputComment)
+    //console.log(inputComment)
 
     useEffect(() =>{
         const abortController = new AbortController();
@@ -60,7 +60,7 @@ function Post({image, id,}: Props): ReactElement {
 
     },[inputComment, comentSent, id])
 
-    //inputComment, comentSent , id,
+ 
 
 
     useEffect(()=>{
@@ -131,7 +131,7 @@ function Post({image, id,}: Props): ReactElement {
                     {
                       imageUrl && (
                          
-                          <img src={imageUrl} alt="" className=" object-cover  transition duration-300 w-full h-[700px] rounded-lg p-2 overflow-hidden"/>
+                          <img src={imageUrl} alt="" className=" object-cover  transition duration-300 w-full h-[600px] rounded-lg p-2 overflow-hidden"/>
                        
                       )  
                     }
@@ -153,21 +153,21 @@ function Post({image, id,}: Props): ReactElement {
                     <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
                     {
-                     comment && (
+                     comment! && (
                         comment?.map((com:any)=>(
                                 
                             <div key={com?._id} className="flex w-full border-b-2d border-gray-300 shadow  scrollbar-hide rounded-lg bg-white px-2 py-1">
-                                 <div className=" flex-1 space-x-2 ">
-                                     <div className=" flex  space-x-2 h-6 w-6">
+                                  <div className=" flex-1 space-x-2 ">
+                                     <div className=" flex  space-x-2 h-8 w-8">
                                       <Avatar/>
-                                      <p className="text-xs text-gray-500 italic">{com.user}</p>
+                                      <p className="text-xs text-gray-500 italic">{com?.user}</p>
                                      </div>
-                                     <p className="pt-2 capitalize">{com.comment}</p> 
-                                </div>
+                                     <p className="pt-2 capitalize">{com?.comment}</p> 
+                                   </div>
 
                                    <div className="mr-2 text-xs text-gray-500">
                                     
-                                    <TimeAgo date={com._createdAt}/>
+                                    <TimeAgo date={com?._createdAt}/>
                                     </div>
 
                                 
