@@ -10,9 +10,9 @@ interface Props {
 
 export const Footer = (props: Props) => {
     return (
-        <footer className="flex h-24 w-full items-center justify-center md:hidden border-t">
+        <footer className="flex h-10 w-full items-center justify-center md:hidden border-t">
         
-        <div className="flex space-x-10"> 
+        <div className="flex space-x-10 pt-6"> 
         
         <Link target="_blank" href="https://williamgyekyeportfolio.vercel.app/"  className="flex flex-col  items-center">
           <p className="text-gray-700">Contact Dev.</p>

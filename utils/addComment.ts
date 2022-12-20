@@ -1,4 +1,4 @@
-export default async function  addCommment (inputComment:string,id:string,albulmUser:string,){
+export default async function  addCommment (inputComment:string, id:string, localUser:string){
 
 const  projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID
 const mutations={
@@ -8,7 +8,7 @@ const mutations={
                 _type:'comment',
                 comment:inputComment,
                 //user:albulmUser,
-                user:albulmUser,
+                user:localUser || "anonymouse",
                 post:{
                     _type:'reference',
                     _ref:id,

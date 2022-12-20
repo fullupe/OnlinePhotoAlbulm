@@ -109,9 +109,18 @@ function Post({image, id,}: Props): ReactElement {
     const addSubmit=  async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
 
-        if(inputComment){
+        let  localUser = await window.localStorage.getItem('albulmUser')
+           
+           setAlbulmUser(localUser!);
 
-            await addCommment(inputComment, id, albulmUser)
+        //    let commentbody ={
+        //        user:localUser,
+        //        commentcolor: 
+        //    }
+
+        if(inputComment && localUser){
+
+            await addCommment(inputComment, id, localUser)
     
             setinputComment('')
 
