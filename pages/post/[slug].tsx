@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 
 import Avatar from '../../components/Avatar';
 import TimeAgo from 'react-timeago'
+import { Footer } from '../../components/Footer';
 
 
 
@@ -128,11 +129,13 @@ function Post({image, id,}: Props): ReactElement {
 
                 <div className="flex h-70 object-contain w bg-red-00 rounded-lg shadow relative">
                     {
-                      imageUrl && (
+                      imageUrl ? (
                          
                           <img src={imageUrl} alt="img" className=" object-cover  transition duration-300 w-full h-[600px] rounded-lg p-2 overflow-hidden"/>
                        
-                      )  
+                      )  :(
+                          null
+                      )
                     }
                  
                     <TbArrowBackUp onClick={()=>router.push("/")} className="absolute top-2 left-2 text-4xl bg-black rounded-lg text-white m-2 hover:scale-105 cursor-pointer"/>
@@ -168,8 +171,6 @@ function Post({image, id,}: Props): ReactElement {
                                     
                                     <TimeAgo date={com?._createdAt}/>
                                     </div>
-
-                                
                             </div>
                             
                             ))
@@ -179,6 +180,9 @@ function Post({image, id,}: Props): ReactElement {
                     }
                         
                     </div>
+
+
+                    <Footer/>
 
                 </div>
               
@@ -242,7 +246,7 @@ export default Post;
 
 
 
-function localUser(localUser: any) {
-    throw new Error('Function not implemented.');
-}
+// function localUser(localUser: any) {
+//     throw new Error('Function not implemented.');
+// }
 
