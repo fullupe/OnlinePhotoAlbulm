@@ -38,12 +38,12 @@ function Post({image, id,}: Props): ReactElement {
 
     const [albulmUser, setAlbulmUser] = useState<string>('');
 
-    const [theuser, setTheuser] = useState<string>(window.localStorage.getItem('albulmUser') || "")
+    //const [theuser, setTheuser] = useState<string>(window.localStorage.getItem('albulmUser') || "")
 
    
 
 
-    console.log(theuser)
+    //console.log(theuser)
 
     useEffect(() =>{
         const abortController = new AbortController();
@@ -111,7 +111,7 @@ function Post({image, id,}: Props): ReactElement {
 
         if(inputComment){
 
-            await addCommment(inputComment, id, albulmUser,theuser)
+            await addCommment(inputComment, id, albulmUser)
     
             setinputComment('')
 
@@ -149,7 +149,7 @@ function Post({image, id,}: Props): ReactElement {
                     <form  onSubmit={addSubmit} className=" flex w-full px-2 py-1 rounded-lg border-2 ">
                         <div className="flex w-full px-2 py-1 rounded-lg border-2 border-orange-400">
                         <input value={inputComment} onChange={(e)=>setinputComment(e.target.value)} placeholder="Type comments......" type="text" className=" w-full outline-none bg-transparent "/>
-                        <input type='hidden'onChange={(e)=>setTheuser(e.target.value)} value={albulmUser} placeholder="name.." className=" w-full"/>
+                        {/* <input type='hidden'onChange={(e)=>setTheuser(e.target.value)} value={albulmUser} placeholder="name.." className=" w-full"/> */}
                             <button type="submit"  disabled={!inputComment} className=" bg-orange-400 p-2 disabled:bg-gray-500 rounded-full">
                                 <BiSend className="w-5 h-5 text-white"/>
                             </button>
