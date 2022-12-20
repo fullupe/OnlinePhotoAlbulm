@@ -8,7 +8,7 @@ const mutations={
                 _type:'comment',
                 comment:inputComment,
                 //user:albulmUser,
-                user:JSON.parse(localStorage.getItem('albulmUser') || ""),
+                user:await JSON.parse(localStorage.getItem('albulmUser') || ""),
                 post:{
                     _type:'reference',
                     _ref:id,
