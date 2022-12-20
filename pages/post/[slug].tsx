@@ -131,9 +131,8 @@ function Post({image, id,}: Props): ReactElement {
                     {
                       imageUrl && (
                          
-                          <img   src={imageUrl} alt="" className=" object-cover  transition duration-300 w-full h-[700px] rounded-lg p-2 overflow-hidden"/>
+                          <img src={imageUrl} alt="" className=" object-cover  transition duration-300 w-full h-[700px] rounded-lg p-2 overflow-hidden"/>
                        
-
                       )  
                     }
                  
@@ -145,7 +144,7 @@ function Post({image, id,}: Props): ReactElement {
                 <div className=" flex flex-col space-y-4 mx-2 bg-whites w-full ">
                     <form  onSubmit={addSubmit} className=" flex w-full px-2 py-1 rounded-lg border-2 ">
                         <div className="flex w-full px-2 py-1 rounded-lg border-2 border-orange-400">
-                        <input value={inputComment} onChange={(e)=>setinputComment(e.target.value)} placeholder="Type comments......" type="" className=" w-full outline-none bg-transparent "/>
+                        <input value={inputComment} onChange={(e)=>setinputComment(e.target.value)} placeholder="Type comments......" type="text" className=" w-full outline-none bg-transparent "/>
                             <button type="submit" disabled={!inputComment} className=" bg-orange-400 p-2 disabled:bg-gray-500 rounded-full">
                                 <BiSend className="w-5 h-5 text-white"/>
                             </button>
