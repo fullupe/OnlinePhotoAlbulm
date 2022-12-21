@@ -9,7 +9,7 @@ export const SimpleTypeWriter = (props: Props) => {
 
     const [text, count] = useTypewriter({
         /* Config */
-        words:["Welcome","berima's photo albulm"],loop:true, delaySpeed:500,
+        words:["Welcome","berima's photo album"],loop:true, delaySpeed:500,
         //words:["WELCOME...🙏","BERIMA OKWANING BRAKO-GYEKYE"],loop:true, delaySpeed:2000,
         // words:["CONGRATULATIONS TO MYSELF...🥂","AND THANK YOU MY DEAR WIFE...😘"],loop:true, delaySpeed:2000,
       })
