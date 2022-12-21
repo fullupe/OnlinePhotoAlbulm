@@ -3,14 +3,14 @@ import React, {useEffect, useState } from 'react';
 
 
 import CardImage from "../components/CardImage"
-
-
 import imageUrlBuilder from "@sanity/image-url"
+
 
 
 //console.log(imageData)
 interface Props{
-  posts:[]
+  posts:[],
+  albulmUser:string
 }
 
 interface Posts{
@@ -21,9 +21,9 @@ interface Posts{
  
 }
 
-function AlbulmPage({posts}:Props) {
+function AlbulmPage({posts, albulmUser}:Props) {
 
-  console.log("post",posts)
+  //console.log("post",posts)
 
   const [mappedPost, setMappedPost] = useState<any>([])
 
@@ -75,7 +75,7 @@ function AlbulmPage({posts}:Props) {
                 {
                   mappedPost?.map(({_id, title, mainImage, slug}:Posts)=>(
 
-                    <CardImage id={_id} mainImage={mainImage} title={title} slug={slug} />
+                    <CardImage id={_id} mainImage={mainImage} title={title} slug={slug} albulmUser={albulmUser} />
 
                   ))
                 }
@@ -94,7 +94,7 @@ function AlbulmPage({posts}:Props) {
 
  export const getServerSideProps: GetServerSideProps= async (Constext) =>{
 
-
+  const albulmUser = Constext.req.cookies.name;
 
  const query = encodeURIComponent('*[ _type == "post" ]');
  const  projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID;
@@ -115,6 +115,7 @@ function AlbulmPage({posts}:Props) {
   return{
     props:{
       posts:result.result,
+      albulmUser,
     }
      }
  }

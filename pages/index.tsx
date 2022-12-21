@@ -10,13 +10,11 @@ const Home: NextPage = () => {
   const router = useRouter()
 
 
-  const [albulmUser, setAlbulmUser] = useState<any>('')
+  const [albulmUser, setAlbulmUser] = useState<string>('')
 
   useEffect(() =>{
 
-    setAlbulmUser(Cookies.get('name'))
-
-      //setAlbulmUser(sessionStorage.getItem('albulmUser') || " ");
+    setAlbulmUser(Cookies.get('name') || "")
 
   },[])
 

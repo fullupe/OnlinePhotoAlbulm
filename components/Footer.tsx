@@ -16,12 +16,12 @@ export const Footer = (props: Props) => {
         
         <Link target="_blank" href="https://williamgyekyeportfolio.vercel.app/"  className="flex flex-col  items-center">
           <p className="text-gray-700">Contact Dev.</p>
-          <MdContactPage className="bg-black text-white rounded-full text-4xl p-1 hover:scale-75 duration-75"/>
+          <MdContactPage className="bg-[#5c5cacdd] text-white rounded-full text-4xl p-2 hover:scale-75 duration-75"/>
         </Link>
 
         <Link target="_blank" href="https://twitter.com/home" className="flex flex-col items-center justify-center">
           <p className="text-gray-700">Twitter</p>
-          <AiOutlineTwitter className="bg-black text-white rounded-full text-4xl p-1 hover:scale-75 duration-75"/>
+          <AiOutlineTwitter className="bg-[#5c5cacdd] text-white rounded-full text-4xl p-2 hover:scale-75 duration-75"/>
         </Link>
 
         </div>

@@ -6,7 +6,8 @@ import { useRouter } from 'next/router';
 import sanityClient from ".././client";
 import addLiked from '../utils/addLiked';
 
-import {runFire} from "../utils/lib/runFire"
+import {runFire} from "../utils/lib/runFire";
+
 
 
 
@@ -14,7 +15,8 @@ interface Props {
     id:string,
     mainImage:string,
     title?:string,
-    slug:string | any
+    slug:string | any,
+    albulmUser:string
 
 }
 
@@ -22,13 +24,11 @@ interface Likeds{
     
 }
 
-function CardImage({id, mainImage, title, slug,}: Props): ReactElement {
+function CardImage({id, mainImage, title, slug, albulmUser}: Props): ReactElement {
 
     const router = useRouter()
 
     const [comment, setcomment] = useState<string[]>();
-
-    const [albulmUser, setAlbulmUser] = useState<any>('');
 
     const [likeds, setlikeds] = useState<string[]>()
 
@@ -48,7 +48,6 @@ function CardImage({id, mainImage, title, slug,}: Props): ReactElement {
     
         .catch(console.error);
 
-        setAlbulmUser(localStorage.getItem('albulmUser') || sessionStorage.getItem('albulmUser'));
         }
 
         getCommentData()

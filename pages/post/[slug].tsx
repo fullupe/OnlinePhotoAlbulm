@@ -33,18 +33,12 @@ function Post({image, id, somename}: Props): ReactElement {
 
     const [comment, setcomment] = useState<[]>([]);
 
-    const [inputComment, setinputComment] = useState<any>('')
+    const [inputComment, setinputComment] = useState<string>('')
 
     const [comentSent, setComentSent] = useState<boolean>(false);
 
-    const [albulmUser, setAlbulmUser] = useState<any>('');
 
-    //const [theuser, setTheuser] = useState<string>(window.localStorage.getItem('albulmUser') || "")
-
-   
-
-
-    console.log(albulmUser)
+    //console.log(albulmUser)
 
     useEffect(() =>{
         const abortController = new AbortController();
@@ -86,35 +80,11 @@ function Post({image, id, somename}: Props): ReactElement {
 
     },[image])
 
-    useEffect(() =>{
-
-        //const abortController = new AbortController();
-
-        const getUserFromLocalStorage= async ()=>{
-
-           //let  localUser = await window.sessionStorage.getItem('albulmUser')
-           
-           setAlbulmUser(Cookies.get('name'));
-        }
-        
-        getUserFromLocalStorage()
-
-        // return ()=>{
-
-        //     abortController.abort()
-        // }
-      },[])
-
-
 
     const addSubmit=  async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
 
-        //let  localUser = await window.localStorage.getItem('albulmUser')
-           
-          // setAlbulmUser(localUser!);
-
-
+       
         if(inputComment ){
 
             await addCommment(inputComment, id, somename)
@@ -155,27 +125,26 @@ function Post({image, id, somename}: Props): ReactElement {
                     <form  onSubmit={addSubmit} className=" flex w-full px-2 py-1 rounded-lg border-2 ">
                         <div className="flex w-full px-2 py-1 rounded-lg border-2 border-orange-400">
                         <input value={inputComment} onChange={(e)=>setinputComment(e.target.value)} placeholder="Type comments......" type="text" className=" w-full outline-none bg-transparent "/>
-                        {/* <input type='hidden'onChange={(e)=>setTheuser(e.target.value)} value={albulmUser} placeholder="name.." className=" w-full"/> */}
                             <button type="submit"  disabled={!inputComment} className=" bg-orange-400 p-2 disabled:bg-gray-500 rounded-full">
                                 <BiSend className="w-5 h-5 text-white"/>
                             </button>
                         </div>
                     </form>
 
-                    <p>{somename}</p>
-                    <div className="flex flex-col m-2 h-[300px] space-y-5 scrollbar-hide overflow-scroll mx-4">
+                    <p className="ml-2 text-xs text-gray-900 italic font-serif">welcom.. {somename} !</p>
+                    <div className="flex flex-col m-2 h-[400px] space-y-5 scrollbar-hide overflow-scroll mx-4">
              
                     {
                       
                         comment?.map((com:any)=>(
                                 
-                            <div key={com?._id} className="flex w-full border-b-2d border-gray-300 shadow  scrollbar-hide rounded-lg bg-white px-2 py-1">
+                            <div key={com?._id} className="flex w-full border-b-2d border-gray-300 shadow   scrollbar-hide rounded-lg bg-white px-2 py-1">
                                   <div className=" flex-1 space-x-2 ">
                                      <div className=" flex  space-x-2 h-10 w-10">
                                       <Avatar/>
                                       <p className="text-xs text-gray-500 italic">{com?.user}</p>
                                      </div>
-                                     <p className="pt-1 capitalize">{com?.comment}</p> 
+                                     <p className="pt-1 capitalize font-mono text-black">{com?.comment}</p> 
                                    </div>
 
                                    <div className="mr-2 text-xs text-gray-500">
@@ -258,7 +227,4 @@ export default Post;
 
 
 
-// function localUser(localUser: any) {
-//     throw new Error('Function not implemented.');
-// }
 

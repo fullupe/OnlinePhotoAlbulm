@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+
 export default async function  addCommment (inputComment:string, id:string, somename:string){
 
 const  projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID
@@ -8,7 +8,6 @@ const mutations={
             create:{
                 _type:'comment',
                 comment:inputComment,
-                //user:albulmUser,
                 user:somename,
                 post:{
                     _type:'reference',
