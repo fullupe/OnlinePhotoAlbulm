@@ -45,7 +45,7 @@ function AlbulmPage({posts, albulmUser}:Props) {
           posts.map((post:[] | any)=>{
             return {
               ...post,
-              mainImage:imageBuilder.image(post.mainImage)
+              mainImage:imageBuilder.image(post.mainImage).url()
             }
           })
           )

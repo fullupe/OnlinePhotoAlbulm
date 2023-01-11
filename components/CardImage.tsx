@@ -1,5 +1,5 @@
 import React, { ReactElement, useState,useEffect } from 'react';
-
+import Image from 'next/image'
 
 import { AiFillLike,AiOutlineComment,AiFillHeart } from 'react-icons/ai';
 import { useRouter } from 'next/router';
@@ -7,9 +7,6 @@ import sanityClient from ".././client";
 import addLiked from '../utils/addLiked';
 
 import {runFire} from "../utils/lib/runFire";
-
-
-
 
 interface Props {
     id:string,
@@ -110,12 +107,13 @@ function CardImage({id, mainImage, title, slug, albulmUser}: Props): ReactElemen
         className=" flex space-x-1 m-4 relative  rounded-lg cursor-pointer">
             <div  className="  flex  items-center justify-center rounded-lg h-96 w-96 border-2 border-orange-300 relative ">
                 
-                <img
-                
-                
-                className=" object-cover  h-96 w-96  rounded-md  overflow-hidden " src={mainImage} alt="img"/>
-
-
+                <Image
+                src={mainImage} alt="img"
+                loader={()=>mainImage}
+                width={384}
+                height={384}
+                className=" object-cover  h-96 w-96  rounded-md  overflow-hidden " 
+                />
               <div className="flex absolute  w-full h-full  overflow-hidden top-0  items-end ">
 
                 <div onClick={()=>router.push(`/post/${slug.current}`)} className="flex h-full w-full"></div>
@@ -161,6 +159,8 @@ function CardImage({id, mainImage, title, slug, albulmUser}: Props): ReactElemen
 }
 
 export default CardImage
+
+
 
 
 

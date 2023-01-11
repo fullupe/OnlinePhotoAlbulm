@@ -4,6 +4,6 @@ module.exports = {
 
 
   images: {
-    domains: ['avatars.dicebear.com'],
+    domains: ['avatars.dicebear.com','cdn.sanity.io'],
   },
 }

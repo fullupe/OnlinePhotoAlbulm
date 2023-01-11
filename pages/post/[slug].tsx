@@ -7,6 +7,7 @@ import { BiSend } from 'react-icons/bi';
 import {TbArrowBackUp } from 'react-icons/tb';
 
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 import Avatar from '../../components/Avatar';
 import TimeAgo from 'react-timeago'
@@ -68,7 +69,7 @@ function Post({image, id, somename}: Props): ReactElement {
                  projectId:process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID!,
                  dataset:process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET!,
             })
-            setImageUrl(imageBuilder.image(image))
+            setImageUrl(imageBuilder.image(image).url())
         }
 
         loadSanityImage()
@@ -109,7 +110,11 @@ function Post({image, id, somename}: Props): ReactElement {
                     {
                       imageUrl ? (
                          
-                          <img src={imageUrl} alt="img" className=" object-cover  transition duration-300 w-full h-[600px] rounded-lg p-2 overflow-hidden"/>
+                          <Image
+                          loader={()=>imageUrl}
+                           width={384}
+                           height={384}
+                           src={imageUrl} alt="img" className=" object-cover  transition duration-300 w-full h-[600px] rounded-lg p-2 overflow-hidden"/>
                        
                       )  :(
                           null
