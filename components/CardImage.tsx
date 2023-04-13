@@ -112,6 +112,7 @@ function CardImage({id, mainImage, title, slug, albulmUser}: Props): ReactElemen
                 loader={()=>mainImage}
                 width={384}
                 height={384}
+                
                 className=" object-cover  h-96 w-96  rounded-md  overflow-hidden " 
                 />
               <div className="flex absolute  w-full h-full  overflow-hidden top-0  items-end ">

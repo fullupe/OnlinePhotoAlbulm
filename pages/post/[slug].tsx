@@ -106,15 +106,20 @@ function Post({image, id, somename}: Props): ReactElement {
 
       
 
-                <div className="flex h-70 object-contain w bg-red-00 rounded-lg shadow relative">
+                <div className="flex h-70 object-containk w-full bg-red-00 rounded-lg shadow relative">
                     {
                       imageUrl ? (
                          
                           <Image
                           loader={()=>imageUrl}
                            width={384}
+
+                           //fill
                            height={384}
-                           src={imageUrl} alt="img" className=" object-cover  transition duration-300 w-full h-[600px] rounded-lg p-2 overflow-hidden"/>
+                           src={imageUrl} alt="img" 
+                           //className="object-cover object-center"
+                           className=" object-cover object-center md:object-topl  transition duration-300 w-full h-[600px] md:h-[960px] md:object-center rounded-lg p-2  overflow-hidden"
+                           />
                        
                       )  :(
                           null
