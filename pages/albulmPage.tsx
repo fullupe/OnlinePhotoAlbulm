@@ -96,7 +96,7 @@ function AlbulmPage({posts, albulmUser}:Props) {
 
   const albulmUser = Constext.req.cookies.name;
 
- const query = encodeURIComponent('*[ _type == "post" ]');
+ const query = encodeURIComponent('*[ _type == "post" ] | order(_createdAt desc)');
  const  projectId = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID;
 
  const url = `https://${projectId}.api.sanity.io/v1/data/query/production?query=${query}`
