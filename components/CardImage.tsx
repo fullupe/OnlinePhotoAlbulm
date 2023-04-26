@@ -8,6 +8,8 @@ import addLiked from '../utils/addLiked';
 
 import {runFire} from "../utils/lib/runFire";
 
+import {memo} from "react"
+
 interface Props {
     id:string,
     mainImage:string,
@@ -159,7 +161,7 @@ function CardImage({id, mainImage, title, slug, albulmUser}: Props): ReactElemen
     )
 }
 
-export default CardImage
+export default memo(CardImage)
 
 
 

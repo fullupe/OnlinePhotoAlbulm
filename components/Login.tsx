@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {SimpleTypeWriter} from "./SimpleTypeWriter";
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
+import { ColorRing } from 'react-loader-spinner'
 
 
 
@@ -14,6 +15,7 @@ export const Login = (props: Props) => {
 
   
     const [password, setPassword] = useState<string>();
+    const [loading, setLoading] = useState<boolean>(false)
 
   
     const submitName =(e:React.FormEvent<HTMLFormElement>)=>{
@@ -21,6 +23,7 @@ export const Login = (props: Props) => {
 
        if(password) {
 
+        setLoading(true)
         Cookies.set('name', password)
     
         router.push('/albulmPage')
@@ -42,9 +45,26 @@ export const Login = (props: Props) => {
                         
                          <form onSubmit={submitName} className="flex flex-col items-center space-y-3">
                           
+                         <input value={password} onChange={(e)=>setPassword(e.target.value)} maxLength={7} className=" rounded-full py-1 w-full text-center border-2 border-[#A3DF]  text-black outline-none" placeholder="Your Name...." type="text"/>
+                            
+                            {
+                            loading &&
+                            <ColorRing
+                            visible={true}
+                            height="80"
+                            width="80"
+                            ariaLabel="blocks-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="blocks-wrapper"
+                            colors={['#e15b64', '#f47e60', '#A3DF', '#abbd81', '#849b87']}
+                            />
+                            
+                            }
 
-                         <input value={password} onChange={(e)=>setPassword(e.target.value)} maxLength={7} className=" rounded w-full text-center  text-black outline-none" placeholder="Your Name...." type="text"/>
-                         <button type="submit" className="px-4 mt-2 py-1 tracking-[2px] shadow rounded-full bg-orange-900">Login</button>
+                         <div className=" bg-yellow-500 rounded-full items-center w-[80%] border-2 border-black  flex justify-center">
+                         <button type="submit" className="px-4 my-1 w-[80%] tracking-[2px] shadow  border-2  font-bold rounded-full bg-yellow-600">Login</button>
+                         </div>
+
                          </form>
 
                         </>

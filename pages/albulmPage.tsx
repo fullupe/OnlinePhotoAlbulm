@@ -4,6 +4,7 @@ import React, {useEffect, useState } from 'react';
 
 import CardImage from "../components/CardImage"
 import imageUrlBuilder from "@sanity/image-url"
+import {memo} from "react"
 
 
 
@@ -123,5 +124,5 @@ function AlbulmPage({posts, albulmUser}:Props) {
  
  }
 
-export default AlbulmPage
+export default memo(AlbulmPage)
 
