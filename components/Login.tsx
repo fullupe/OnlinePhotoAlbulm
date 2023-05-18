@@ -77,7 +77,7 @@ export const Login = (props: Props) => {
             
                 </div>
 
-                <p className="tracking-[4px] text-gray-400">Photo Albulm</p>
+                <p className="tracking-[4px] text-gray-400">Photo Album</p>
 
              </div>
 

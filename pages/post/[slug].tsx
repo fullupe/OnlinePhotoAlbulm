@@ -5,6 +5,7 @@ import sanityClient from "../../client";
 import addCommment from '../../utils/addComment';
 import { BiSend } from 'react-icons/bi';
 import {TbArrowBackUp } from 'react-icons/tb';
+import {BsEmojiFrown } from 'react-icons/bs';
 
 import { useRouter } from 'next/router'
 import Image from 'next/image'
@@ -13,6 +14,9 @@ import Avatar from '../../components/Avatar';
 import TimeAgo from 'react-timeago'
 import { Footer } from '../../components/Footer';
 import Cookies from 'js-cookie'
+
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 
 interface Props {
@@ -29,6 +33,7 @@ function Post({image, id, somename}: Props): ReactElement {
 
     const router = useRouter()
 
+    const [showEmoji, setShowEmoji] = useState(false)
 
     const [imageUrl, setImageUrl] = useState<any>("")
 
@@ -81,6 +86,17 @@ function Post({image, id, somename}: Props): ReactElement {
 
     },[image])
 
+    const AddEmoji = (e:any)=>{
+        const sym = e.unified.split("_");
+        const codeArray: any[] =[];
+        sym.map((el:any)=>codeArray.push("0x" + el));
+        let emoji = String.fromCodePoint(...codeArray);
+
+        setinputComment(inputComment + emoji)
+
+
+    }
+
 
     const addSubmit=  async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
@@ -132,13 +148,28 @@ function Post({image, id, somename}: Props): ReactElement {
 
 
                 <div className=" flex flex-col space-y-4 mx-2 bg-whites w-full ">
-                    <form  onSubmit={addSubmit} className=" flex w-full px-2 py-1 rounded-lg border-2 ">
-                        <div className="flex w-full px-2 py-1 rounded-lg border-2 border-orange-400">
+                    <form  onSubmit={addSubmit} className=" flex w-full px-2 py-1 rounded-lg border-2  relative">
+                        <div className="flex w-full items-center px-2 py-1 rounded-lg border-2 border-orange-400">
                         <input value={inputComment} onChange={(e)=>setinputComment(e.target.value)} placeholder="Type comments......" type="text" className=" w-full outline-none bg-transparent "/>
+                            
+                       
+                            <BsEmojiFrown onClick={()=>setShowEmoji(!showEmoji)} className="mr-4 w-6 h-6 cursor-pointer"/>
+    
                             <button type="submit"  disabled={!inputComment} className=" bg-orange-400 p-2 disabled:bg-gray-500 rounded-full">
                                 <BiSend className="w-5 h-5 text-white"/>
                             </button>
+                        
                         </div>
+
+                        {
+                            showEmoji && (
+                                <div  className="absolute right-20 top-14 -mt-1 ">
+                        <Picker data={data} emojiSize={20} emojiButtonSize={28} maxFrequentRows={0} onEmojiSelect={AddEmoji} />
+                        </div>
+                            )
+                        }
+                        
+                        
                     </form>
 
                     <p className="ml-2 text-xs text-gray-900 italic font-serif">welcom.. {somename} !</p>
