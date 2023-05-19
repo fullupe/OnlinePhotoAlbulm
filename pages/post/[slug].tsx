@@ -5,7 +5,8 @@ import sanityClient from "../../client";
 import addCommment from '../../utils/addComment';
 import { BiSend } from 'react-icons/bi';
 import {TbArrowBackUp } from 'react-icons/tb';
-import {BsEmojiFrown } from 'react-icons/bs';
+import {BsEmojiFrown,BsArrowUpCircleFill } from 'react-icons/bs';
+
 
 import { useRouter } from 'next/router'
 import Image from 'next/image'
@@ -163,8 +164,9 @@ function Post({image, id, somename}: Props): ReactElement {
 
                         {
                             showEmoji && (
-                                <div  className="absolute right-20 top-14 -mt-1 ">
+                                <div  className="absolute right-20 top-14 -mt-1 bg-red-900d pb-2 items-center justify-center flex flex-col ">
                         <Picker data={data} emojiSize={20} emojiButtonSize={28} maxFrequentRows={0} onEmojiSelect={AddEmoji} />
+                        <BsArrowUpCircleFill onClick={()=>setShowEmoji(!showEmoji)} className="h-6 z-10 -mt-4 w-6 cursor-pointer"/>
                         </div>
                             )
                         }
